@@ -7,3 +7,6 @@ For this interview practice algorithm, there are `n` number of locked boxes. Eac
   * A key with the same number as a box opens that box (all keys will be positive integers).
   * There can be boxes without keys or keys that do not have cooresponding boxes.
   * Returns `True` is all boxes can be unlocked, `False` otherwise
+
+### test_files
+The test_files/ directory contains files used to test the output of the algorithm locally.
