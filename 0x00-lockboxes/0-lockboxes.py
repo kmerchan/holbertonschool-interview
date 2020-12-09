@@ -18,9 +18,12 @@ def canUnlockAll(boxes):
         True, if all boxes can be unlocked
         False, if one or more boxes cannot be unlocked
     """
+    from copy import deepcopy
+
     if type(boxes) is not list:
         return False
-    unlockedBoxes = unlockBox(boxes, 0)
+    unlockedBoxes = deepcopy(boxes)
+    unlockedBoxes = unlockBox(unlockedBoxes, 0)
     for box in unlockedBoxes:
         if -1 not in box:
             return False
