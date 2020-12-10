@@ -54,14 +54,8 @@ def unlockBox(boxes, key):
     returns:
         boxes, with marker (-1) indicating that the box has been opened
     """
-    if type(key) is not int or key is -1:
-        # if key is invalid or the key is the flag for an opened box, return
-        return boxes
-    if key >= len(boxes):
-        # if the key is out of range of the available boxes, return
-        return boxes
-    if -1 in boxes[key]:
-        # if the box has previously been opened, return
+    if type(key) is not int or key < 0:
+        # if key is invalid
         return boxes
     # mark that the box has been opened by appeneding a -1 flag
     # since all keys are positive ints, -1 will not be mistaken for a valid key
@@ -69,9 +63,16 @@ def unlockBox(boxes, key):
     # loop through any new keys found in the recently opened box
     # use new keys to potentially open more boxes with the unlockBox() method
     for new_key in boxes[key]:
-        # update the list of boxes by calling unlockBox() to open new boxes
-        if new_key >= len(boxes) or -1 in boxes[new_key]:
+        if new_key is -1:
+            # if new key is the flag for an opened box, continue
             continue
+        if new_key >= len(boxes):
+            # if new key is out of range of the available boxes, continue
+            continue
+        if -1 in boxes[new_key]:
+            # if the box has previously been opened, continue
+            continue
+        # update the list of boxes by calling unlockBox() to open new boxes
         boxes = unlockBox(boxes, new_key)
     # after unlocking all boxes with the available keys, return boxes
     return boxes
