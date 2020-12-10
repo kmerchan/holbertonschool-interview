@@ -48,7 +48,7 @@ def canUnlockAll(boxes):
             if new_key >= len(copyBoxes):
                 # if new key is out of range of the available boxes, continue
                 continue
-            if -1 in copyBoxes[new_key]:
+            if -1 in copyBoxes[new_key] or new_key in keys_list:
                 # if the box has previously been opened, continue
                 continue
             # update the list of availble key
