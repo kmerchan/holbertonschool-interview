@@ -18,7 +18,7 @@ def canUnlockAll(boxes):
         True, if all boxes can be unlocked
         False, if one or more boxes cannot be unlocked
     """
-    from copy import deepcopy
+    # from copy import deepcopy
 
     # checks if given valid list of boxes
     if type(boxes) is not list or len(boxes) < 1:
@@ -29,10 +29,10 @@ def canUnlockAll(boxes):
         if type(box) is not list:
             return False
     # creates a copy of boxes to not affect the original list of lists
-    unlockedBoxes = deepcopy(boxes)
+    # unlockedBoxes = deepcopy(boxes)
     # calls unlockBox() method to open box 0
     # unlockBox() will recursively open any boxes with keys from the opened box
-    unlockedBoxes = unlockBox(unlockedBoxes, 0)
+    unlockedBoxes = unlockBox(boxes, 0)
     # after opening all possible boxes, check that total boxes have been opened
     # opened boxes are noted with a -1 flag
     for box in unlockedBoxes:
