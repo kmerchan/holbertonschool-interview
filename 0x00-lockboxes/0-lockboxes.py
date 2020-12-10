@@ -20,8 +20,11 @@ def canUnlockAll(boxes):
     """
     from copy import deepcopy
 
-    if type(boxes) is not list:
+    if type(boxes) is not list or len(boxes) < 1:
         return False
+    for box in boxes:
+        if type(box) is not list:
+            return False
     unlockedBoxes = deepcopy(boxes)
     unlockedBoxes = unlockBox(unlockedBoxes, 0)
     for box in unlockedBoxes:
