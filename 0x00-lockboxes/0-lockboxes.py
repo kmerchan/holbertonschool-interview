@@ -47,6 +47,9 @@ def canUnlockAll(boxes):
         # loop through any new keys found in the recently opened box
         # save new keys to keys_list to potentially open more boxes
         for new_key in copyBoxes[key]:
+            if new_key is -1:
+                # if new key is -1 flag to marks as opened, continue
+                continue
             if new_key >= len(copyBoxes):
                 # if new key is out of range of the available boxes, continue
                 continue
