@@ -30,15 +30,17 @@ def canUnlockAll(boxes):
             return False
     # creates a copy of boxes to not affect the original list of lists
     copyBoxes = deepcopy(boxes)
-    # calls unlockBox() method to open box 0
-    # unlockBox() will recursively open any boxes with keys from the opened box
+    # creates list of available keys (only contains 0 initially)
     keys_list = [0]
+    # while there are still available keys:
     while len(keys_list) > 0:
+        # the current key will be the first available key
         key = keys_list[0]
+        # keys_list will reset to remove used key
         keys_list = keys_list[1:]
+        # checks if given valid key
         if type(key) is not int or key < 0:
-            # if key is invalid, move to next valid key
-            continue
+            return False
         # mark that the box has been opened by appeneding a -1 flag
         # since all keys are pos ints, -1 will not be mistaken for a valid key
         copyBoxes[key].append(-1)
@@ -49,7 +51,7 @@ def canUnlockAll(boxes):
                 # if new key is out of range of the available boxes, continue
                 continue
             if -1 in copyBoxes[new_key] or new_key in keys_list:
-                # if the box has previously been opened, continue
+                # if box previously been opened or key already known, continue
                 continue
             # update the list of availble key
             keys_list.append(new_key)
