@@ -23,6 +23,9 @@ struct binary_tree_s
 	struct binary_tree_s *right;
 };
 
+/* Binary Tree */
+typedef struct binary_tree_s binary_tree_t;
+
 /* Max Binary Heap */
 typedef struct binary_tree_s heap_t;
 
