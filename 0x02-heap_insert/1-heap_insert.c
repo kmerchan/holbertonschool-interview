@@ -2,6 +2,7 @@
 
 size_t binary_tree_height(heap_t *root);
 heap_t *find_location(heap_t *root, size_t level);
+heap_t *swap_child(heap_t **root, heap_t *new);
 
 /**
  * heap_insert - inserts a value into a Max Binary Heap
@@ -16,7 +17,6 @@ heap_t *heap_insert(heap_t **root, int value)
 {
 	size_t level = 0, height = 0;
 	heap_t *location = NULL, *new = NULL;
-	int temp = 0;
 
 	if (root == NULL)
 		return (NULL);
@@ -40,10 +40,7 @@ heap_t *heap_insert(heap_t **root, int value)
 		location->right = new;
 	while (new->parent && new->n > new->parent->n)
 	{
-		temp = new->parent->n;
-		new->parent->n = new->n;
-		new->n = temp;
-		new = new->parent;
+		new = swap_child(root, new);
 	}
 	return (new);
 }
@@ -86,4 +83,59 @@ heap_t *find_location(heap_t *root, size_t level)
 		return (location);
 	location = find_location(root->right, level - 1);
 	return (location);
+}
+
+/**
+ * swap_child - swaps the new node with its parent
+ * @root: double pointer to the root node of the max binary heap
+ * @new: recently inserted node to swap
+ *
+ * Return: pointer to new node after switch
+ */
+heap_t *swap_child(heap_t **root, heap_t *new)
+{
+	int left = 0;
+	heap_t *temp = new->parent, *temp_r = temp->right, *temp_l = temp->left;
+
+	if (new->parent->left == new)
+		left = 1;
+	/* set 2 pointers: parent's right */
+	new->parent->right = new->right;
+	if (new->right)
+		new->right->parent = new->parent;
+	/* set 2 pointers: parent's left */
+	new->parent->left = new->left;
+	if (new->left)
+		new->left->parent = new->parent;
+	/* set 2 pointers: new sibling becomes child */
+	if (left)
+	{
+		new->right = temp_r;
+		if (temp_r)
+			temp_r->parent = new;
+	}
+	else
+	{
+		new->left = temp_l;
+		if (temp_l)
+			temp_l->parent = new;
+	}
+	/* set 2 pointers: connection to grandparent */
+	new->parent = temp->parent;
+	if (temp->parent)
+	{
+		if (temp->parent->left == temp)
+			temp->parent->left = new;
+		else
+			temp->parent->right = new;
+	}
+	else
+		*root = new;
+	/* sets 2 pointers: between new and parent */
+	if (left)
+		new->left = temp;
+	else
+		new->right = temp;
+	temp->parent = new;
+	return (new);
 }
