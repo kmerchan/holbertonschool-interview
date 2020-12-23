@@ -39,5 +39,11 @@ binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);
 
 /* function that inserts a value into a Max Binary Heap */
 heap_t *heap_insert(heap_t **root, int value);
+/* subfunction to determine the height of the tree */
+size_t binary_tree_height(heap_t *root);
+/* subfunction to find location to insert at to maintain completeness */
+heap_t *find_location(heap_t *root, size_t level);
+/* subfunction to swap newly inserted node with parent for max heap order */
+heap_t *swap_child(heap_t **root, heap_t *new);
 
 #endif /* BINARY_TREES_H */

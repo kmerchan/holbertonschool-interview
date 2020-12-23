@@ -1,9 +1,5 @@
 #include "binary_trees.h"
 
-size_t binary_tree_height(heap_t *root);
-heap_t *find_location(heap_t *root, size_t level);
-heap_t *swap_child(heap_t **root, heap_t *new);
-
 /**
  * heap_insert - inserts a value into a Max Binary Heap
  * Max Binary Heap must be complete tree with max as root node
