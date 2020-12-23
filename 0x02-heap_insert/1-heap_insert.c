@@ -16,6 +16,7 @@ heap_t *heap_insert(heap_t **root, int value)
 {
 	size_t level = 0, height = 0;
 	heap_t *location = NULL, *new = NULL;
+	int temp = 0;
 
 	if (root == NULL)
 		return (NULL);
@@ -37,6 +38,13 @@ heap_t *heap_insert(heap_t **root, int value)
 		location->left = new;
 	else
 		location->right = new;
+	while (new->parent && new->n > new->parent->n)
+	{
+		temp = new->parent->n;
+		new->parent->n = new->n;
+		new->n = temp;
+		new = new->parent;
+	}
 	return (new);
 }
 
@@ -67,6 +75,8 @@ heap_t *find_location(heap_t *root, size_t level)
 {
 	heap_t *location = NULL;
 
+	if (root == NULL)
+		return (NULL);
 	if (level == 0 && root->right == NULL)
 		return (root);
 	else if (level == 0)
