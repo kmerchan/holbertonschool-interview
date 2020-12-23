@@ -95,15 +95,12 @@ heap_t *swap_child(heap_t **root, heap_t *new)
 
 	if (new->parent->left == new)
 		left = 1;
-	/* set 2 pointers: parent's right */
 	new->parent->right = new->right;
 	if (new->right)
 		new->right->parent = new->parent;
-	/* set 2 pointers: parent's left */
 	new->parent->left = new->left;
 	if (new->left)
 		new->left->parent = new->parent;
-	/* set 2 pointers: new sibling becomes child */
 	if (left)
 	{
 		new->right = temp_r;
@@ -116,7 +113,6 @@ heap_t *swap_child(heap_t **root, heap_t *new)
 		if (temp_l)
 			temp_l->parent = new;
 	}
-	/* set 2 pointers: connection to grandparent */
 	new->parent = temp->parent;
 	if (temp->parent)
 	{
@@ -127,7 +123,6 @@ heap_t *swap_child(heap_t **root, heap_t *new)
 	}
 	else
 		*root = new;
-	/* sets 2 pointers: between new and parent */
 	if (left)
 		new->left = temp;
 	else
