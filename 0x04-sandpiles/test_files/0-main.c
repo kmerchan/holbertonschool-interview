@@ -3,6 +3,13 @@
 
 #include "sandpiles.h"
 
+/**
+ * print_grid_sum - prints two grids to sum with plus sign between
+ * @grid1: first 3x3 grid of integers to print
+ * @grid2: second 3x3 grid of integers to print
+ *
+ */
+
 static void print_grid_sum(int grid1[3][3], int grid2[3][3])
 {
 	int i, j;
@@ -27,6 +34,12 @@ static void print_grid_sum(int grid1[3][3], int grid2[3][3])
 		printf("\n");
 	}
 }
+
+/**
+ * print_grid - prints individual grid
+ * @grid: 3x3 grid of integers to print
+ *
+ */
 
 static void print_grid(int grid[3][3])
 {
