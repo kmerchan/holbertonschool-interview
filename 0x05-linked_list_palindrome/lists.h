@@ -31,7 +31,7 @@ void free_listint(listint_t *head);
 
 /* Function to check if list is a palindrome */
 int is_palindrome(listint_t **head);
-/* Subfunction that inserts node at beginning of list */
-listint_t *insert_node_beginning(listint_t **backwards, int n);
+/* Subfunction that checks if list is palindrome recursively */
+int palindrome_check(listint_t **head, listint_t *mover);
 
 #endif /* LISTS_H */
