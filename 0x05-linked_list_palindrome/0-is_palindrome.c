@@ -9,71 +9,52 @@
 
 int is_palindrome(listint_t **head)
 {
-	listint_t *mover = NULL, *backwards = NULL, *hold = NULL;
-
 	if (head == NULL)
 		return (0);
 	if (*head == NULL)
 		return (1);
-	mover = *head;
-	while(mover)
-	{
-		insert_node_beginning(&backwards, mover->n);
-		mover = mover->next;
-	}
-	mover = *head;
-	hold = backwards;
-	while(mover)
-	{
-		if (mover->n != backwards->n)
-		{
-			free_list(hold);
-			return (0);
-		}
-		mover = mover->next;
-		backwards = backwards->next;
-	}
-	free_list(hold);
-	return (1);
+	return (palindrome_check(*head, list_length(*head)));
 }
 
 /**
- * insert_node_beginning - inserts new node at beginning of list
- * @backwards: singly linked list to add to
- * @n: value to add to list
+ * list_length - returns the length of a singly linked list
+ * @head: pointer to the head of the list
  *
- * Returns: pointer to newly created node
+ * Returns: length of the list
  */
-listint_t *insert_node_beginning(listint_t **backwards, int n)
+
+int list_length(listint_t *head)
 {
-	listint_t *new = NULL;
+	listint_t *mover = head;
+	int size = 0;
 
-	new = malloc(sizeof(listint_t));
-	if (new == NULL)
-		return (NULL);
-
-	new->n = n;
-	new->next = *backwards;
-
-	*backwards = new;
-	return (new);
+	while(mover)
+	{
+		size++;
+		mover = mover->next;
+	}
+	return (size);
 }
 
-
 /**
- * free_list - frees a singly linked list
- * @head: pointer to beginning of list to free
+ * palindrome_check - checks if list is palindrome recursively
+ * @head: single pointer to linked list
+ * @count: how far deep to from head to check the end
  *
+ * Returns: 0 if not palindrome, 1 if palindrome;
  */
-void free_list(listint_t *head)
+int palindrome_check(listint_t *head, int size)
 {
-	listint_t *current;
+	listint_t *mover = head;
+	int count = 0;
 
-	while(head)
-	{
-		current = head->next;
-		free(head);
-		head = current;
-	}
-	free(head);
+	if (size <= 1)
+		return (1);
+	for (count = 1; count < size; count++)
+		mover = mover->next;
+	if (head->n != mover->n)
+		return (0);
+	head = head->next;
+	size -= 2;
+	return (palindrome_check(head, size));
 }
