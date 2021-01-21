@@ -9,51 +9,71 @@
 
 int is_palindrome(listint_t **head)
 {
-	int *array = NULL, size = 0, i = 0;
-	listint_t *mover = NULL;
+	listint_t *mover = NULL, *backwards = NULL, *hold = NULL;
 
 	if (head == NULL)
 		return (0);
 	if (*head == NULL)
 		return (1);
-	size = list_length(*head);
-	array = malloc(sizeof(int) * size);
-	if (array == NULL)
-		return (0);
 	mover = *head;
-	for (i = 0; i < size; i++)
+	while(mover)
 	{
-		array[i] = mover->n;
+		insert_node_beginning(&backwards, mover->n);
 		mover = mover->next;
 	}
-	for (i = 0; i < (size / 2); i++)
+	mover = *head;
+	hold = backwards;
+	while(mover)
 	{
-		if (array[i] != array[size - 1 - i])
+		if (mover->n != backwards->n)
 		{
-			free(array);
+			free_list(hold);
 			return (0);
 		}
+		mover = mover->next;
+		backwards = backwards->next;
 	}
-	free(array);
+	free_list(hold);
 	return (1);
 }
 
 /**
- * list_length - returns the length of a singly linked list
- * @head: pointer to the head of the list
+ * insert_node_beginning - inserts new node at beginning of list
+ * @backwards: singly linked list to add to
+ * @n: value to add to list
  *
- * Returns: length of the list
+ * Returns: pointer to newly created node
  */
-
-int list_length(listint_t *head)
+listint_t *insert_node_beginning(listint_t **backwards, int n)
 {
-	listint_t *mover = head;
-	int size = 0;
+	listint_t *new = NULL;
 
-	while(mover)
+	new = malloc(sizeof(listint_t));
+	if (new == NULL)
+		return (NULL);
+
+	new->n = n;
+	new->next = *backwards;
+
+	*backwards = new;
+	return (new);
+}
+
+
+/**
+ * free_list - frees a singly linked list
+ * @head: pointer to beginning of list to free
+ *
+ */
+void free_list(listint_t *head)
+{
+	listint_t *current;
+
+	while(head)
 	{
-		size++;
-		mover = mover->next;
+		current = head->next;
+		free(head);
+		head = current;
 	}
-	return (size);
+	free(head);
 }
