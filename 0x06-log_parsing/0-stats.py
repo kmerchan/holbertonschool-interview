@@ -27,11 +27,10 @@ if __name__ == "__main__":
                         if status_codes[status] != 0:
                             print("{}: {}".format(
                                 status, status_codes[status]))
-        if count % 10 != 0:
-            print("File size: {}".format(total_size))
-            for status in sorted(status_codes.keys()):
-                if status_codes[status] != 0:
-                    print("{}: {}".format(status, status_codes[status]))
+        print("File size: {}".format(total_size))
+        for status in sorted(status_codes.keys()):
+            if status_codes[status] != 0:
+                print("{}: {}".format(status, status_codes[status]))
     except KeyboardInterrupt as err:
         print("File size: {}".format(total_size))
         for status in sorted(status_codes.keys()):
