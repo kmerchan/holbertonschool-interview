@@ -20,12 +20,13 @@ if __name__ == "__main__":
             if args[8][-1] == '\n':
                 args[8][:-1]
                 total_size += int(args[8])
+                count += 1
                 if count % 10 == 0:
                     print("File size: {}".format(total_size))
                     for status in sorted(status_codes.keys()):
                         if status_codes[status] != 0:
-                            print("{}: {}".format(status, status_codes[status]))
-            count += 1
+                            print("{}: {}".format(
+                                status, status_codes[status]))
         if count % 10 != 0:
             print("File size: {}".format(total_size))
             for status in sorted(status_codes.keys()):
