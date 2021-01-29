@@ -15,18 +15,22 @@ if __name__ == "__main__":
     count = 0
     try:
         for line in stdin:
-            args = line.split(" ")
-            status_codes[args[7]] += 1
-            if args[8][-1] == '\n':
-                args[8][:-1]
+            try:
+                args = line.split(" ")
+                if args[7] in list_status_codes:
+                    status_codes[args[7]] += 1
+                if args[8][-1] == '\n':
+                    args[8][:-1]
                 total_size += int(args[8])
-                count += 1
-                if count % 10 == 0:
-                    print("File size: {}".format(total_size))
-                    for status in sorted(status_codes.keys()):
-                        if status_codes[status] != 0:
-                            print("{}: {}".format(
-                                status, status_codes[status]))
+            except Exception as e:
+                pass
+            count += 1
+            if count % 10 == 0:
+                print("File size: {}".format(total_size))
+                for status in sorted(status_codes.keys()):
+                    if status_codes[status] != 0:
+                        print("{}: {}".format(
+                            status, status_codes[status]))
         print("File size: {}".format(total_size))
         for status in sorted(status_codes.keys()):
             if status_codes[status] != 0:
