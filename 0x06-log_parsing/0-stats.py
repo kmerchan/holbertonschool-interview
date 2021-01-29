@@ -17,12 +17,14 @@ if __name__ == "__main__":
         for line in stdin:
             try:
                 args = line.split(" ")
-                if args[7] in list_status_codes:
-                    status_codes[args[7]] += 1
-                if args[8][-1] == '\n':
-                    args[8][:-1]
-                total_size += int(args[8])
-            except Exception as e:
+                if len(args) != 9:
+                    pass
+                if args[-2] in list_status_codes:
+                    status_codes[args[-2]] += 1
+                if args[-1][-1] == '\n':
+                    args[-1][:-1]
+                total_size += int(args[-1])
+            except:
                 pass
             count += 1
             if count % 10 == 0:
