@@ -7,6 +7,8 @@ This repository contains work on practice technical interview questions for Holb
 * [0x03. Minimum Operations](/0x03-minimum_operations)
 * [0x04. Sandpiles](/0x04-sandpiles)
 * [0x05. Linked List Palindrome](/0x05-linked_list_palindrome)
+* [0x06. Log Parsing](/0x06-log_parsing)
+* [0x07. Linked List Cycle](/0x07-linked_list_cycle)
 
 ### Authors
 Kelsie Merchant [GitHub](https://github.com/kmerchan/) / [email: kelsie.merchant@holbertonschool.com](kelsie.merchant@holbertonschool.com)
