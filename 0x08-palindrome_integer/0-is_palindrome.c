@@ -10,7 +10,7 @@
 int is_palindrome(unsigned long n)
 {
 	/* ULONG_MAX = 18446744073709551615, with max digits = 20 */
-	int digit = 19, first = 0, last = 0;
+	int digit = 20, first = 0, last = 0;
 
 	while (n / (power_of_ten(digit)) == 0)
 		digit--;
