@@ -9,22 +9,36 @@
 
 int is_palindrome(unsigned long n)
 {
-	/* ULONG_MAX = 18446744073709551615, with max digits = 20 */
-	int digit = 20, first = 0, last = 0;
+	int digit[1] = {0};
 
-	while (n / (power_of_ten(digit)) == 0)
-		digit--;
-	while (n)
+	return palindrome_check(&n, digit);
+}
+
+/**
+ * palindrome_check - checks if unsigned long int is a palindrome recursively
+ * @n: pointer to number to check if palindrome
+ * @digit: pointer to keep track of digit count;
+ * used to find power of 10 to isolate digit
+ *
+ * Return: 1 if palindrome, 0 if not
+ */
+int palindrome_check(unsigned long *n, int *digit)
+{
+	if ((*n) / (power_of_ten((*digit) + 1)) != 0)
 	{
-		first = n / (power_of_ten(digit));
-		last = n % 10;
-		if (first != last)
+		(*digit) += 1;
+		if (palindrome_check(n, digit))
+		{
+			(*n) %= (power_of_ten(*digit));
+			(*n) /= 10;
+			(*digit) -= 2;
+		}
+		else
 			return (0);
-		n %= (power_of_ten(digit));
-		n /= 10;
-		digit -= 2;
 	}
-	return (1);
+	if (((*n) / power_of_ten(*digit)) == (*n) % 10)
+		return (1);
+	return (0);
 }
 
 /**
@@ -40,6 +54,8 @@ unsigned long power_of_ten(int digit)
 {
 	unsigned long value = 1;
 
+	if (digit < 1)
+		return (value);
 	while (digit)
 	{
 		value *= 10;
