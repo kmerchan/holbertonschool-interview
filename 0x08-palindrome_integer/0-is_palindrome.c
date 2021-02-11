@@ -24,7 +24,7 @@ int is_palindrome(unsigned long n)
  */
 int palindrome_check(unsigned long *n, int *digit)
 {
-	if ((*n) / (power_of_ten((*digit) + 1)) != 0)
+	if ((*digit) < 20 && (*n) / (power_of_ten((*digit) + 1)) != 0)
 	{
 		(*digit) += 1;
 		if (palindrome_check(n, digit))
