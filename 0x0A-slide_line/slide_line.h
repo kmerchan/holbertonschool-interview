@@ -11,5 +11,6 @@
 
 /* FUNCTION PROTOTYPES */
 int slide_line(int *line, size_t size, int direction);
+void slide(int *line, int index, int placeholder);
 
 #endif
