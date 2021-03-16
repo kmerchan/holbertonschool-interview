@@ -13,6 +13,7 @@ This repository contains work on practice technical interview questions for Holb
 * [0x09. UTF-8 Validation](/0x09-utf8_validation)
 * [0x0A. 2048 (single line)](/0x0A-slide_line)
 * [0x0B. Menger Sponge](/0x0B-menger)
+* [0x0C. N Queens](/0x0C-nqueens)
 
 ### Authors
 Kelsie Merchant [GitHub](https://github.com/kmerchan/) / [email: kelsie.merchant@holbertonschool.com](kelsie.merchant@holbertonschool.com)
