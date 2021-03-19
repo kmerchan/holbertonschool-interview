@@ -84,13 +84,13 @@ def solve(matrix, new_column):
     N = len(matrix)
     # base case: all queens are placed
     if new_column >= N:
+        print_solution(matrix)
         return matrix
     for new_row in range(N):
         if is_safe(matrix, new_row, new_column):
             matrix[new_row][new_column] = 1
             # call to recursively try to solve rest of queens
-            if solve(matrix, new_column + 1):
-                return matrix
+            solve(matrix, new_column + 1)
             # if can't solve with this position, re-set as 0
             matrix[new_row][new_column] = 0
     return None
@@ -110,6 +110,4 @@ if __name__ == "__main__":
         print("N must be at least 4")
         exit(1)
     matrix = board_set_up(N)
-    for i in range(N):
-        if solve(matrix, i):
-            print_solution(matrix)
+    solve(matrix, 0)
