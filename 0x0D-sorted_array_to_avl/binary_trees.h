@@ -34,5 +34,9 @@ void binary_tree_print(const binary_tree_t *);
 
 /* function to build AVL tree from sorted array */
 avl_t *sorted_array_to_avl(int *array, size_t size);
+/* function to add nodes to AVL tree from sorted array recursively */
+avl_t *add_node_avl(int *array, size_t size, avl_t **tree, int add_left);
+/* function to free AVL tree if malloc fails creating a later node */
+void free_avl(avl_t **tree);
 
 #endif /* _BINARY_TREES_H_ */
