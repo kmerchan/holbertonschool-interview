@@ -14,6 +14,7 @@ This repository contains work on practice technical interview questions for Holb
 * [0x0A. 2048 (single line)](/0x0A-slide_line)
 * [0x0B. Menger Sponge](/0x0B-menger)
 * [0x0C. N Queens](/0x0C-nqueens)
+* [0x0D. Array to AVL](/0x0D-sorted_array_to_avl)
 
 ### Authors
 Kelsie Merchant [GitHub](https://github.com/kmerchan/) / [email: kelsie.merchant@holbertonschool.com](kelsie.merchant@holbertonschool.com)
