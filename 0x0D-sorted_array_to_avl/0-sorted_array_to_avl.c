@@ -11,12 +11,13 @@
 avl_t *sorted_array_to_avl(int *array, size_t size)
 {
 	avl_t *tree = NULL;
+	int check = 0;
 
 	if (array == NULL || size < 1)
 		return (NULL);
 
-	tree = add_node_avl(array, size, &tree, 1);
-	if (tree == NULL)
+	check = add_node_avl(array, size, &tree, 1);
+	if (check)
 	{
 		free_avl(&tree);
 		return (NULL);
@@ -34,19 +35,20 @@ avl_t *sorted_array_to_avl(int *array, size_t size)
  * @tree: double pointer to AVL tree
  * @add_left: flag to indicate if the new node will be a left child
  *
- * Return: pointer to root node of AVL tree, or NULL if failed
+ * Return: 0 if successful, or -1 if failed
  */
-avl_t *add_node_avl(int *array, size_t size, avl_t **tree, int add_left)
+int add_node_avl(int *array, size_t size, avl_t **tree, int add_left)
 {
 	size_t halfway = (size - 1) / 2;
-	avl_t *new_node = NULL, *check = NULL;
+	avl_t *new_node = NULL;
+	int check = 0;
 
 	if (array == NULL || size < 1)
-		return (*tree);
+		return (0);
 
 	new_node = malloc(sizeof(avl_t));
 	if (new_node == NULL)
-		return (NULL);
+		return (-1);
 	new_node->n = array[halfway];
 	new_node->parent = (*tree);
 	new_node->left = NULL;
@@ -60,15 +62,15 @@ avl_t *add_node_avl(int *array, size_t size, avl_t **tree, int add_left)
 		(*tree)->right = new_node;
 
 	check = add_node_avl(array, halfway, &new_node, 1);
-	if (check == NULL)
-		return (NULL);
+	if (check == -1)
+		return (-1);
 
 	halfway++;
 	check = add_node_avl(&array[halfway], size - halfway, &new_node, 0);
-	if (check == NULL)
-		return (NULL);
+	if (check == -1)
+		return (-1);
 
-	return (*tree);
+	return (0);
 }
 
 /**
@@ -81,7 +83,7 @@ void free_avl(avl_t **tree)
 {
 	avl_t *left = NULL, *right = NULL;
 
-	if (tree == NULL)
+	if (tree == NULL || (*tree) == NULL)
 		return;
 
 	left = (*tree)->left;
