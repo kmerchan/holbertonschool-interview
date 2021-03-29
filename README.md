@@ -15,6 +15,7 @@ This repository contains work on practice technical interview questions for Holb
 * [0x0B. Menger Sponge](/0x0B-menger)
 * [0x0C. N Queens](/0x0C-nqueens)
 * [0x0D. Array to AVL](/0x0D-sorted_array_to_avl)
+* [0x0E. Linear Search in Skip List](/0x0E-linear_skip)
 
 ### Authors
 Kelsie Merchant [GitHub](https://github.com/kmerchan/) / [email: kelsie.merchant@holbertonschool.com](kelsie.merchant@holbertonschool.com)
