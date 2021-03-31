@@ -33,10 +33,12 @@ skiplist_t *linear_skip(skiplist_t *list, int value)
 	while (mover->next)
 	{
 		printf("%s[%ld] = [%d]\n", string1, mover->index, mover->n);
-		if (mover->n == value)
+		if (mover->n >= value)
 			break;
 		mover = mover->next;
 	}
+	if (mover->next == NULL)
+		printf("%s[%ld] = [%d]\n", string1, mover->index, mover->n);
 	if (mover->n == value)
 		return (mover);
 	return (NULL);
