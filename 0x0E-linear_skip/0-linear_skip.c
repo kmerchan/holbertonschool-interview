@@ -30,7 +30,7 @@ skiplist_t *linear_skip(skiplist_t *list, int value)
 			break;
 	}
 	printf("%s[%ld] and [%ld]\n", string2, mover->index, express->index);
-	while (mover->next)
+	while (mover->next && mover->index != express->index)
 	{
 		printf("%s[%ld] = [%d]\n", string1, mover->index, mover->n);
 		if (mover->n >= value)
