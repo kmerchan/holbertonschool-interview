@@ -28,6 +28,12 @@ skiplist_t *linear_skip(skiplist_t *list, int value)
 		printf("%s[%ld] = [%d]\n", string1, express->index, express->n);
 		if (express->n >= value)
 			break;
+		if (express->express == NULL)
+		{
+			mover = express;
+			while (express->next)
+				express = express->next;
+		}
 	}
 	printf("%s[%ld] and [%ld]\n", string2, mover->index, express->index);
 	while (mover->next && mover->index != express->index)
