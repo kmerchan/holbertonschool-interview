@@ -16,6 +16,7 @@ This repository contains work on practice technical interview questions for Holb
 * [0x0C. N Queens](/0x0C-nqueens)
 * [0x0D. Array to AVL](/0x0D-sorted_array_to_avl)
 * [0x0E. Linear Search in Skip List](/0x0E-linear_skip)
+* [0x0F. Star Wars API](0x0F-starwars_api)
 
 ### Authors
 Kelsie Merchant [GitHub](https://github.com/kmerchan/) / [email: kelsie.merchant@holbertonschool.com](kelsie.merchant@holbertonschool.com)
