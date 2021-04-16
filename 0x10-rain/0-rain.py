@@ -23,4 +23,10 @@ def rain(walls):
     for i in walls:
         if i < 0:
             return 0
-    return sum(walls[1:-1])
+    amount = 0
+    for index, height in enumerate(walls):
+        left_max = max(walls[:index + 1])
+        right_max = max(walls[index:])
+        shorter_wall = min(left_max, right_max)
+        amount += max(shorter_wall - height, 0)
+    return amount
