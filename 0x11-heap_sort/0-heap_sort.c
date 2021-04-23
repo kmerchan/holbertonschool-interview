@@ -10,7 +10,5 @@
  */
 void heap_sort(int *array, size_t size)
 {
-	(void)size;
-
-	return (array);
+	print_array(array, size);
 }
