@@ -18,6 +18,7 @@ This repository contains work on practice technical interview questions for Holb
 * [0x0E. Linear Search in Skip List](/0x0E-linear_skip)
 * [0x0F. Star Wars API](0x0F-starwars_api)
 * [0x10. Rain](0x10-rain)
+* [0x11. Heap Sort](/0x11-heap_sort)
 
 ### Authors
 Kelsie Merchant [GitHub](https://github.com/kmerchan/) / [email: kelsie.merchant@holbertonschool.com](kelsie.merchant@holbertonschool.com)
