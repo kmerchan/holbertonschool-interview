@@ -11,4 +11,4 @@ This interview algorithm project works with the heap sort algorithm.
     * in the worst case
 
 ### test_files
-The test_files/ directory contains files used to test the output of the algorithm locally.
+The test_files/ directory contains files used to test the output of the algorithm locally and all initially given source code
