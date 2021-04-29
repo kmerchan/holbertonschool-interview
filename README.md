@@ -19,6 +19,7 @@ This repository contains work on practice technical interview questions for Holb
 * [0x0F. Star Wars API](0x0F-starwars_api)
 * [0x10. Rain](0x10-rain)
 * [0x11. Heap Sort](/0x11-heap_sort)
+* [0x12. Advanced Binary Search](/0x12-advanced_binary_search)
 
 ### Authors
 Kelsie Merchant [GitHub](https://github.com/kmerchan/) / [email: kelsie.merchant@holbertonschool.com](kelsie.merchant@holbertonschool.com)
