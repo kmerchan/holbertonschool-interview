@@ -21,7 +21,7 @@ def count_words(subreddit, word_list, after=None, count={}):
     if after is None:
         sub_URL = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
     else:
-        sub_URL='https://www.reddit.com/r/{}/hot.json?after={}'.format(
+        sub_URL = 'https://www.reddit.com/r/{}/hot.json?after={}'.format(
             subreddit, after)
     subreddit_info = requests.get(sub_URL,
                                   headers={"user-agent": "user"},
