@@ -43,7 +43,7 @@ def count_words(subreddit, word_list, after=None, count={}):
             count[word] += title.count(word)
     after = data.get("after")
     if after is not None:
-        return (count_words(subreddit, word_list, after, count))
+        return count_words(subreddit, word_list, after, count)
     result = []
     for k in count.keys():
         if count[k] != 0:
@@ -57,8 +57,8 @@ def count_words(subreddit, word_list, after=None, count={}):
                             result[i:]
                         break
                     elif count[k] == int(result[i].split(' ')[1]):
-                        alpha_list = [k, result[i].split(' ')[0]]
-                        j = 1
+                        alpha_list = [k]
+                        j = 0
                         while count[k] == int(result[i + j].split(' ')[1]):
                             alpha_list.append(result[i + j].split(' ')[0])
                         alpha_list = alpha_list.sort
