@@ -59,14 +59,17 @@ def count_words(subreddit, word_list, after=None, count={}):
                     elif count[k] == int(result[i].split(' ')[1]):
                         alpha_list = [k]
                         j = 0
-                        while count[k] == int(result[i + j].split(' ')[1]):
-                            alpha_list.append(result[i + j].split(' ')[0])
-                        alpha_list = alpha_list.sort
-                        for j in range(len(alpha_list)):
-                            if k == alpha_list[j]:
-                                result = result[:i + j] + \
-                                    ["{}: {}".format(k, count[k])] + \
-                                    result[i + j:]
+                        try:
+                            while count[k] == int(result[i + j].split(' ')[1]):
+                                alpha_list.append(result[i + j].split(' ')[0])
+                            alpha_list = alpha_list.sort
+                            for j in range(len(alpha_list)):
+                                if k == alpha_list[j]:
+                                    result = result[:i + j] + \
+                                        ["{}: {}".format(k, count[k])] + \
+                                        result[i + j:]
+                        except IndexError as err:
+                            continue
                     else:
                         continue
                 else:
