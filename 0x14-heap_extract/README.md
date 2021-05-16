@@ -5,7 +5,7 @@ This interview algorithm problem utilizes a Max Binary Heap. A Max Binary Heap i
 * Write a function in C `int heap_extract(heap_t **root)` that extracts the root node of a Max Binary Heap, returning the value extracted and rebuilding the max heap.
   * `root` is a double pointer to the root node of the heap
   * returns the value store in the extracted node
-  * root node must be freed and replaced with the next level-order node of the heap
+  * root node must be freed and replaced with the last level-order node of the heap
   * the heap must be rebuilt to preserve Max Binary Heap if necessary
 
 ### test_files
