@@ -32,5 +32,9 @@ void binary_tree_print(const binary_tree_t *);
 
 /* Function that extracts the root node of a Max Binary Heap */
 int heap_extract(heap_t **root);
+/* Helper function to find height of a complete binary tree */
+size_t binary_tree_height(heap_t *root);
+/* Helper function to find last node in level-order traversal */
+heap_t *find_replacement(heap_t *root, size_t level);
 
 #endif /* _BINARY_TREES_H_ */
