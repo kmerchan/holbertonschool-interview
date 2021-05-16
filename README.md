@@ -21,6 +21,7 @@ This repository contains work on practice technical interview questions for Holb
 * [0x11. Heap Sort](/0x11-heap_sort)
 * [0x12. Advanced Binary Search](/0x12-advanced_binary_search)
 * [0x13. Count it!](/0x13-count_it)
+* [0x14. Heap Extract](/0x14-heap_extract)
 
 ### Authors
 Kelsie Merchant [GitHub](https://github.com/kmerchan/) / [email: kelsie.merchant@holbertonschool.com](kelsie.merchant@holbertonschool.com)
