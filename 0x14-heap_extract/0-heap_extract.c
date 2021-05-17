@@ -99,12 +99,12 @@ void free_and_replace(heap_t **root, heap_t **left,
 		return;
 	}
 	/* extracts root node and replaces with node found above */
-	free(*root);
 	if ((*last)->parent->left == (*last))
 		(*last)->parent->left = NULL;
 	else if ((*last)->parent->right == (*last))
 		(*last)->parent->right = NULL;
 	(*last)->parent = NULL;
+	free(*root);
 	*root = *last;
 
 	if ((*left) != (*last))
