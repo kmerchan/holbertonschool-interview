@@ -12,7 +12,7 @@
 
 int heap_extract(heap_t **root)
 {
-	int value = 0, check = 1;
+	int value = 0;
 	size_t height = 0, level = 0;
 	heap_t *left = NULL, *right = NULL, *last = NULL;
 
@@ -125,7 +125,8 @@ void heapify(heap_t **root, heap_t **last, int *check)
 {
 	(void)check;
 	int last_is_left_child = 0;
-	heap_t *temp = (*last)->parent, *left = (*last)->left, *right = (*last)->right;
+	heap_t *temp = (*last)->parent, *left = (*last)->left;
+	heap_t *right = (*last)->right;
 
 	if (temp->left == (*last))
 		last_is_left_child = 1;
@@ -152,7 +153,7 @@ void heapify(heap_t **root, heap_t **last, int *check)
 	}
 	else
 	{
-		(*last)->left= temp->left;
+		(*last)->left = temp->left;
 		if (temp->left)
 			temp->left->parent = (*last);
 		(*last)->right = temp;
