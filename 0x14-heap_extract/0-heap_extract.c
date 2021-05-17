@@ -121,9 +121,8 @@ void free_and_replace(heap_t **root, heap_t **left,
  * @check: int pointer to flag if need to continue swapping
  */
 
-void heapify(heap_t **root, heap_t **last, int *check)
+void heapify(heap_t **root, heap_t **last)
 {
-	(void)check;
 	int last_is_left_child = 0;
 	heap_t *temp = (*last)->parent, *left = (*last)->left;
 	heap_t *right = (*last)->right;

@@ -40,6 +40,6 @@ void find_replacement(heap_t *root, size_t level, heap_t **last);
 void free_and_replace(heap_t **root, heap_t **left,
 		      heap_t **right, heap_t **last);
 /* Helper function to maintain Max Binary Heap */
-void heapify(heap_t **root, heap_t **last, int *check);
+void heapify(heap_t **root, heap_t **last);
 
 #endif /* _BINARY_TREES_H_ */
