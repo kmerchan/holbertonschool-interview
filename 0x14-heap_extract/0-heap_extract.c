@@ -12,7 +12,7 @@
 
 int heap_extract(heap_t **root)
 {
-	int value = 0;
+	int value = 0, check = 1;
 	size_t height = 0, level = 0;
 	heap_t *left = NULL, *right = NULL, *last = NULL;
 
@@ -34,6 +34,8 @@ int heap_extract(heap_t **root)
 	free_and_replace(root, &left, &right, &last);
 
 	/* heapify (swap) to maintain Max Binary Heap */
+	while (last && check)
+		heapify(root, last, &check);
 
 	return (value);
 }
@@ -117,45 +119,53 @@ void free_and_replace(heap_t **root, heap_t **left,
 /**
  * heapify - swaps nodes to maintain Max Binary Heap
  * @root: double pointer to root node of heap
- * @last: double pointer to current node
+ * @current: pointer to current node
  * @check: int pointer to flag if need to continue swapping
  */
 
-void heapify(heap_t **root, heap_t **last)
+void heapify(heap_t **root, heap_t *current, int *check)
 {
-	int last_is_left_child = 0;
-	heap_t *temp = (*last)->parent, *left = (*last)->left;
-	heap_t *right = (*last)->right;
+	heap_t *max = NULL, *left = current->left, *right = current->right;
 
-	if (temp->left == (*last))
-		last_is_left_child = 1;
-	(*last)->parent = temp->parent;
-	if (temp->parent == NULL)
-		*root = (*last);
-	else if (temp->parent->left == temp)
-		temp->parent->left = (*last);
-	else if (temp->parent->right == temp)
-		temp->parent->right = (*last);
-	if (left)
-		left->parent = temp;
-	temp->left = left;
-	if (right)
-		right->parent = temp;
-	temp->right = right;
-	if (last_is_left_child)
+	if (current == NULL)
 	{
-		(*last)->right = temp->right;
-		if (temp->right)
-			temp->right->parent = (*last);
-		(*last)->left = temp;
-		temp->parent = (*last);
+		*check = 0;
+		return;
 	}
-	else
+	max = current;
+	if (left && left->n > max->n)
+		max = left;
+	if (right && right->n > max->n)
+		max = right;
+	if (current == max)
 	{
-		(*last)->left = temp->left;
-		if (temp->left)
-			temp->left->parent = (*last);
-		(*last)->right = temp;
-		temp->parent = (*last);
+		*check = 0;
+		return;
 	}
+	max->parent = current->parent;
+	if (current->parent == NULL)
+		*root = max;
+	else if (current->parent->left == current)
+		current->parent->left = max;
+	else if (current->parent->right == current)
+		current->parent->right = max;
+	current->left = max->left;
+	if (max->left)
+		max->left->parent = current;
+	current->right = max->right;
+	if (max->right)
+		max->right->parent = current;
+	if (max == left)
+	{
+		max->right = right;
+		right->parent = max;
+		max->left = current;
+	}
+	else if (max == right)
+	{
+		max->left = left;
+		left->parent = max;
+		max->right = current;
+	}
+	current->parent = max;
 }
