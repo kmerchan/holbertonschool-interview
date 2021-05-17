@@ -127,11 +127,6 @@ void heapify(heap_t **root, heap_t *current, int *check)
 {
 	heap_t *max = NULL, *left = current->left, *right = current->right;
 
-	if (current == NULL)
-	{
-		*check = 0;
-		return;
-	}
 	max = current;
 	if (left && left->n > max->n)
 		max = left;
