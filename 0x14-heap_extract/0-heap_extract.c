@@ -12,7 +12,7 @@
 
 int heap_extract(heap_t **root)
 {
-	int value = 0;
+	int value = 0, check = 1;
 	size_t height = 0, level = 0;
 	heap_t *left = NULL, *right = NULL, *last = NULL;
 
@@ -27,36 +27,14 @@ int heap_extract(heap_t **root)
 
 	/* find replacement node (last level-order node) */
 	height = binary_tree_height(*root);
-	for (level = 0; level < height; level++)
-	{
-		last = find_replacement(*root, level);
-		if (last != NULL)
-			break;
-	}
+	for (level = 0; level <= height; level++)
+		find_replacement(*root, level, &last);
 
-	/* extract and reset root pointer if only node */
-	if (last == *root)
-	{
-		free(*root);
-		*root = NULL;
-		return (value);
-	}
-	/* extracts root node and replaces with node found above */
-	free(*root);
-	if (last->parent->left == last)
-		last->parent->left = NULL;
-	else if (last->parent->right == last)
-		last->parent->right = NULL;
-	last->parent = NULL;
-	*root = last;
-	last->left = left;
-	if (left)
-		left->parent = last;
-	last->right = right;
-	if (right)
-		right->parent = last;
+	/* extract root and replace with found last level order node */
+	free_and_replace(root, &left, &right, &last);
 
 	/* heapify (swap) to maintain Max Binary Heap */
+
 	return (value);
 }
 
@@ -81,23 +59,103 @@ size_t binary_tree_height(heap_t *root)
  * since level-order traversal, finds location of last node for complete tree
  * @root: pointer to the root node of the tree
  * @level: keeps track of the current level in the tree
+ * @last: double pointer to current last node,
+ * updates while moving through level order
  *
  * Return: location of last node in level order, which will replace root node
  */
 
-heap_t *find_replacement(heap_t *root, size_t level)
+void find_replacement(heap_t *root, size_t level, heap_t **last)
 {
-	heap_t *location = NULL;
-
 	if (root == NULL)
-		return (NULL);
-	if (level == 0 && root->right == NULL)
-		return (root);
-	else if (level == 0)
-		return (NULL);
-	location = find_replacement(root->left, level - 1);
-	if (location != NULL)
-		return (location);
-	location = find_replacement(root->right, level - 1);
-	return (location);
+		return;
+	if (level == 0)
+		(*last) = root;
+	find_replacement(root->left, level - 1, last);
+	find_replacement(root->right, level - 1, last);
+}
+
+/**
+ * free_and_replace - extracts and frees the root node, then
+ * replaces the root of the heap with last level order node
+ *
+ * @root: double pointer to root node to extract
+ * @left: double pointer to root node's left child or NULL
+ * @right: double pointer to root node's right child or NULL
+ * @last: double pointer to last node from level order traversal
+ */
+
+void free_and_replace(heap_t **root, heap_t **left,
+		      heap_t **right, heap_t **last)
+{
+	/* extract and reset root pointer if only node */
+	if (*last == *root)
+	{
+		free(*root);
+		*root = NULL;
+		*last = NULL;
+		return;
+	}
+	/* extracts root node and replaces with node found above */
+	free(*root);
+	if ((*last)->parent->left == (*last))
+		(*last)->parent->left = NULL;
+	else if ((*last)->parent->right == (*last))
+		(*last)->parent->right = NULL;
+	(*last)->parent = NULL;
+	*root = *last;
+	if ((*left) != (*last))
+		(*last)->left = (*left);
+	if (*left)
+		(*left)->parent = (*last);
+	if ((*right) != (*left))
+		(*last)->right = (*right);
+	if (*right)
+		(*right)->parent = (*last);
+}
+
+/**
+ * heapify - swaps nodes to maintain Max Binary Heap
+ * @root: double pointer to root node of heap
+ * @last: double pointer to current node
+ * @check: int pointer to flag if need to continue swapping
+ */
+
+void heapify(heap_t **root, heap_t **last, int *check)
+{
+	(void)check;
+	int last_is_left_child = 0;
+	heap_t *temp = (*last)->parent, *left = (*last)->left, *right = (*last)->right;
+
+	if (temp->left == (*last))
+		last_is_left_child = 1;
+	(*last)->parent = temp->parent;
+	if (temp->parent == NULL)
+		*root = (*last);
+	else if (temp->parent->left == temp)
+		temp->parent->left = (*last);
+	else if (temp->parent->right == temp)
+		temp->parent->right = (*last);
+	if (left)
+		left->parent = temp;
+	temp->left = left;
+	if (right)
+		right->parent = temp;
+	temp->right = right;
+	if (last_is_left_child)
+	{
+		(*last)->right = temp->right;
+		if (temp->right)
+			temp->right->parent = (*last);
+		(*last)->left = temp;
+		temp->parent = (*last);
+	}
+	else
+	{
+		(*last)->left= temp->left;
+		if (temp->left)
+			temp->left->parent = (*last);
+		(*last)->right = temp;
+		temp->parent = (*last);
+	}
 }

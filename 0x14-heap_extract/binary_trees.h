@@ -35,6 +35,11 @@ int heap_extract(heap_t **root);
 /* Helper function to find height of a complete binary tree */
 size_t binary_tree_height(heap_t *root);
 /* Helper function to find last node in level-order traversal */
-heap_t *find_replacement(heap_t *root, size_t level);
+void find_replacement(heap_t *root, size_t level, heap_t **last);
+/* Helper function to free root node and replace with found replacement */
+void free_and_replace(heap_t **root, heap_t **left,
+		      heap_t **right, heap_t **last);
+/* Helper function to maintain Max Binary Heap */
+void heapify(heap_t **root, heap_t **last, int *check);
 
 #endif /* _BINARY_TREES_H_ */
