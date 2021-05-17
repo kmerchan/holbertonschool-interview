@@ -106,14 +106,19 @@ void free_and_replace(heap_t **root, heap_t **left,
 		(*last)->parent->right = NULL;
 	(*last)->parent = NULL;
 	*root = *last;
+
 	if ((*left) != (*last))
+	{
 		(*last)->left = (*left);
-	if (*left)
-		(*left)->parent = (*last);
-	if ((*right) != (*left))
+		if (*left)
+			(*left)->parent = (*last);
+	}
+	if ((*right) != (*last))
+	{
 		(*last)->right = (*right);
-	if (*right)
-		(*right)->parent = (*last);
+		if (*right)
+			(*right)->parent = (*last);
+	}
 }
 
 /**
@@ -153,13 +158,15 @@ void heapify(heap_t **root, heap_t *current, int *check)
 	if (max == left)
 	{
 		max->right = right;
-		right->parent = max;
+		if (right)
+			right->parent = max;
 		max->left = current;
 	}
 	else if (max == right)
 	{
 		max->left = left;
-		left->parent = max;
+		if (left)
+			left->parent = max;
 		max->right = current;
 	}
 	current->parent = max;
