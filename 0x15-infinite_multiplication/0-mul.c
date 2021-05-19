@@ -10,8 +10,8 @@
 
 int main(int argc, char *argv[])
 {
-	int digit_count1 = 0, digit_count2 = 0, max_digit = 0, min_digit = 0;
-	int row = 0, column = 0, start = 0, i = 0, j = 0;
+	unsigned int digit_count1 = 0, digit_count2 = 0, max_digit = 0, min_digit = 0;
+	unsigned int row = 0, column = 0, start = 0, i = 0, j = 0;
 	int product = 0, remainder = 0;
 	char *num1 = NULL, *num2 = NULL, **calculation = NULL, *final = NULL;
 
@@ -19,17 +19,17 @@ int main(int argc, char *argv[])
 		error();
 	digit_count1 = digit_check(argv[1]);
 	digit_count2 = digit_check(argv[2]);
-	if (digit_count1 == -1 || digit_count2 == -1)
+	if (digit_count1 == 0 || digit_count2 == 0)
 		error();
 	set_max_min(digit_count1, digit_count2, &max_digit, &min_digit,
 		    &num1, &num2, argv[1], argv[2]);
 	calculation = create_double(min_digit, min_digit + max_digit);
 	start = (min_digit + max_digit - 1);
-	for (i = (min_digit - 1), row = 0; i >= 0; i--, row++)
+	for (i = min_digit, row = 0; i > 0; i--, row++)
 	{
-		for (j = (max_digit - 1), column = start; j >= 0; j--, column--)
+		for (j = max_digit, column = start; j > 0; j--, column--)
 		{
-			product = (num1[j] - '0') * (num2[i] - '0');
+			product = (num1[j - 1] - '0') * (num2[i - 1] - '0');
 			product += remainder;
 			calculation[row][column] = (product % 10) + '0';
 			remainder = product / 10;
@@ -71,7 +71,7 @@ void error(void)
  *
  * @number: array of characters to check if digits
  *
- * Return: -1 on failure or number of digits in number
+ * Return: 0 on failure or number of digits in number
  */
 
 int digit_check(char *number)
@@ -81,7 +81,7 @@ int digit_check(char *number)
 	for (i = 0; number[i]; i++)
 	{
 		if (number[i] < '0' || number[i] > '9')
-			return (-1);
+			return (0);
 	}
 	return (i);
 }
@@ -98,8 +98,8 @@ int digit_check(char *number)
  * @arg2: pointer to second number argument
  */
 
-void set_max_min(int digit_count1, int digit_count2,
-		 int *max_digit, int *min_digit,
+void set_max_min(unsigned int digit_count1, unsigned int digit_count2,
+		 unsigned int *max_digit, unsigned int *min_digit,
 		 char **num1, char **num2, char *arg1, char *arg2)
 {
 	if (digit_count1 > digit_count2)
@@ -127,10 +127,10 @@ void set_max_min(int digit_count1, int digit_count2,
  * Return: the 2D array initialized with 0s
  */
 
-char **create_double(int row_size, int column_size)
+char **create_double(unsigned int row_size, unsigned int column_size)
 {
 	char **calculation = NULL;
-	int row = 0, column = 0;
+	unsigned int row = 0, column = 0;
 
 	calculation = malloc(sizeof(char *) * (row_size + 1));
 	if (calculation == NULL)
@@ -140,7 +140,7 @@ char **create_double(int row_size, int column_size)
 		calculation[row] = malloc(sizeof(char) * (column_size + 1));
 		if (calculation[row] == NULL)
 		{
-			for (; row >= 0; row--)
+			for (; (row + 1) > 0; row--)
 				free(calculation[row]);
 			free(calculation);
 			error();
@@ -163,10 +163,10 @@ char **create_double(int row_size, int column_size)
  * Return: the final array with the final product value
  */
 
-char *create_final(int size, char **calculation)
+char *create_final(unsigned int size, char **calculation)
 {
 	char *final = NULL;
-	int row = 0, column = 0, sum = 0, remainder = 0;
+	unsigned int row = 0, column = 0, sum = 0, remainder = 0;
 
 	final = malloc(sizeof(char) * (size + 1));
 	if (final == NULL)
@@ -177,7 +177,7 @@ char *create_final(int size, char **calculation)
 		error();
 	}
 	final[size] = '\0';
-	for (column = (size - 1); column >= 0; column--)
+	for (column = (size - 1); (column + 1) > 0; column--)
 	{
 		sum = 0;
 		for (row = 0; calculation[row]; row++)
@@ -203,7 +203,7 @@ char *create_final(int size, char **calculation)
 
 char *final_realloc(char *final, char **calculation)
 {
-	int i = 0, leading = 0, new_size = 1;
+	unsigned int i = 0, leading = 0, new_size = 1;
 	char *final_realloc = NULL;
 
 	for (i = 0; final[i]; i++)
