@@ -203,7 +203,7 @@ char *create_final(int size, char **calculation)
 
 char *final_realloc(char *final, char **calculation)
 {
-	int i = 0, leading = 0, new_size = 0;
+	int i = 0, leading = 0, new_size = 1;
 	char *final_realloc = NULL;
 
 	for (i = 0; final[i]; i++)
@@ -211,10 +211,7 @@ char *final_realloc(char *final, char **calculation)
 		if (leading)
 			new_size++;
 		else if (final[i] != '0')
-		{
 			leading = 1;
-			new_size = 1;
-		}
 	}
 	final_realloc = malloc(sizeof(char) * (new_size + 1));
 	if (final_realloc == NULL)
