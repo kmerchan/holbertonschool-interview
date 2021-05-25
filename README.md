@@ -23,6 +23,7 @@ This repository contains work on practice technical interview questions for Holb
 * [0x13. Count it!](/0x13-count_it)
 * [0x14. Heap Extract](/0x14-heap_extract)
 * [0x15. Infinite Multiplication](/0x15-infinite_multiplication)
+* [0x16. Rotate 2D Matrix](/0x16-rotate_2d_matrix)
 
 ### Authors
 Kelsie Merchant [GitHub](https://github.com/kmerchan/) / [email: kelsie.merchant@holbertonschool.com](kelsie.merchant@holbertonschool.com)
