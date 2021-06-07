@@ -25,6 +25,7 @@ This repository contains work on practice technical interview questions for Holb
 * [0x15. Infinite Multiplication](/0x15-infinite_multiplication)
 * [0x16. Rotate 2D Matrix](/0x16-rotate_2d_matrix)
 * [0x17. Find the Loop](/0x17-find_the_loop)
+* [0x18. Merge Sort](/0x18-merge_sort)
 
 ### Authors
 Kelsie Merchant [GitHub](https://github.com/kmerchan/) / [email: kelsie.merchant@holbertonschool.com](kelsie.merchant@holbertonschool.com)
