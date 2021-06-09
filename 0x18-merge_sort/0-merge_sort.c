@@ -18,7 +18,7 @@ void merge_sort(int *array, size_t size)
 		return;
 	merge_sort(array, mid);
 	merge_sort(&array[mid], size - mid);
-	merge(array, mid, size);
+	merge(holder, array, mid, size);
 	free(holder);
 }
 
