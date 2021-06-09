@@ -20,7 +20,7 @@ void merge_sort(int *array, size_t size)
 }
 
 /**
- * merge_sort_holder - sorts an array of ints with top-down merge sort algorithm
+ * merge_sort_holder - sorts array of ints with top-down merge sort algorithm
  * and includes malloced holder array
  * @array: array of integers to sort
  * @size: size of the array of integers to sort
@@ -31,8 +31,8 @@ void merge_sort_holder(int *array, size_t size, int *holder)
 {
 	int mid = size / 2;
 
-	merge_sort(array, mid);
-	merge_sort(&array[mid], size - mid);
+	merge_sort_holder(array, mid, holder);
+	merge_sort_holder(&array[mid], size - mid, holder);
 	merge(holder, array, mid, size);
 }
 
