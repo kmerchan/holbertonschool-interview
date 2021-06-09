@@ -10,30 +10,32 @@
 void merge_sort(int *array, size_t size)
 {
 	int mid = size / 2;
+	int *holder = malloc(sizeof(int) * size);
 
+	if (holder == NULL)
+		return;
 	if (size <= 1 || array == NULL)
 		return;
 	merge_sort(array, mid);
 	merge_sort(&array[mid], size - mid);
 	merge(array, mid, size);
+	free(holder);
 }
 
 
 /**
  * merge - merges two subarrays together
+ * @holder: temp array to hold information during merge
  * @array: array to merge
  * @mid: index of mid-point
  * @size: size of array to merge
  *
  */
 
-void merge(int *array, int mid, size_t size)
+void merge(int *holder, int *array, int mid, size_t size)
 {
-	int *holder = malloc(sizeof(int) * size);
 	int left = 0, right = mid, index = 0;
 
-	if (holder == NULL)
-		return;
 	printf("Merging...\n[left]: ");
 	print_array(array, mid);
 	printf("[right]: ");
@@ -68,5 +70,4 @@ void merge(int *array, int mid, size_t size)
 		array[index] = holder[index];
 	printf("[Done]: ");
 	print_array(array, size);
-	free(holder);
 }
