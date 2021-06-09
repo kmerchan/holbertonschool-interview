@@ -9,19 +9,32 @@
 
 void merge_sort(int *array, size_t size)
 {
-	int mid = size / 2;
 	int *holder = malloc(sizeof(int) * size);
 
 	if (holder == NULL)
 		return;
 	if (size <= 1 || array == NULL)
 		return;
-	merge_sort(array, mid);
-	merge_sort(&array[mid], size - mid);
-	merge(holder, array, mid, size);
+	merge_sort_holder(array, size, holder);
 	free(holder);
 }
 
+/**
+ * merge_sort_holder - sorts an array of ints with top-down merge sort algorithm
+ * and includes malloced holder array
+ * @array: array of integers to sort
+ * @size: size of the array of integers to sort
+ * @holder: temp array to hold information during merge
+ */
+
+void merge_sort_holder(int *array, size_t size, int *holder)
+{
+	int mid = size / 2;
+
+	merge_sort(array, mid);
+	merge_sort(&array[mid], size - mid);
+	merge(holder, array, mid, size);
+}
 
 /**
  * merge - merges two subarrays together
