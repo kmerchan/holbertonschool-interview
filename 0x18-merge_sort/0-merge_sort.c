@@ -14,7 +14,10 @@ void merge_sort(int *array, size_t size)
 	if (holder == NULL)
 		return;
 	if (size <= 1 || array == NULL)
+	{
+		free(holder);
 		return;
+	}
 	merge_sort_holder(array, size, holder);
 	free(holder);
 }
@@ -30,6 +33,9 @@ void merge_sort(int *array, size_t size)
 void merge_sort_holder(int *array, size_t size, int *holder)
 {
 	int mid = size / 2;
+
+	if (size <= 1)
+		return;
 
 	merge_sort_holder(array, mid, holder);
 	merge_sort_holder(&array[mid], size - mid, holder);
