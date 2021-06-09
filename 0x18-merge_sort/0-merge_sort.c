@@ -68,4 +68,5 @@ void merge(int *array, int mid, size_t size)
 		array[index] = holder[index];
 	printf("[Done]: ");
 	print_array(array, size);
+	free(holder);
 }
