@@ -27,6 +27,7 @@ This repository contains work on practice technical interview questions for Holb
 * [0x17. Find the Loop](/0x17-find_the_loop)
 * [0x18. Merge Sort](/0x18-merge_sort)
 * [0x19. Making Change](/0x19-making_change)
+* [0x1A. Double Circular Linked List](0x1A-double_circular_linked_list)
 
 These projects demonstrate work in a variety of languages, including:
 * C
