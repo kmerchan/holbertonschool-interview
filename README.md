@@ -32,8 +32,14 @@ These projects contain work in a variety of languages, including:
 * C
 <img src="https://i.ibb.co/5xskfqQ/Screenshot-2021-06-27-11-55-49-PM.png" alt="C code" border="0">
 <img src="https://i.ibb.co/Q9Qqp8m/Screenshot-2021-06-27-11-39-14-PM.png" alt="C program output" border="0">
+
 * Python
+<img src="https://i.ibb.co/JQ582pj/Screenshot-2021-06-27-11-59-04-PM.png" alt="Python code" border="0">
+<img src="https://i.ibb.co/gwYJm0z/Screenshot-2021-06-27-11-47-33-PM.png" alt="Python program output" border="0">
+
 * Javascript
+<img src="https://i.ibb.co/tc4zzZ4/Screenshot-2021-06-28-12-02-05-AM.png" alt="Javascript code" border="0">
+<img src="https://i.ibb.co/Gkhm78X/Screenshot-2021-06-27-11-44-05-PM.png" alt="Javascript program output" border="0">
 
 ### Author
 Kelsie Merchant:
