@@ -14,16 +14,13 @@ heap_t *heap_insert(heap_t **root, int value)
 	size_t level = 0, height = 0;
 	heap_t *location = NULL, *new = NULL;
 
-	/* return if given NULL instead of valid pointer */
 	if (root == NULL)
 		return (NULL);
 	/* if given pointer to empty max binary heap, */
 	/*   create new node and set root pointer to new node */
 	if (*root == NULL)
 	{
-		/* Create new node with binary_tree_node function */
 		new = binary_tree_node(*root, value);
-		/* Reset root pointer to point to new root */
 		*root = new;
 		return (new);
 	}
@@ -47,11 +44,9 @@ heap_t *heap_insert(heap_t **root, int value)
 	/* Otherwise, set new node as location's right child */
 	else
 		location->right = new;
-	/* While new is not the root node and parent's value is less than, */
-	/*   keep swapping nodes until maintaining max binary heap */
+	/* Keep swapping nodes until max binary heap is achieved */
 	while (new->parent && new->n > new->parent->n)
 	{
-		/* Swap the new node with its parent to maintain max heap */
 		new = swap_child(root, new);
 	}
 	/* return newly inserted node */
@@ -121,61 +116,40 @@ heap_t *swap_child(heap_t **root, heap_t *new)
 	int left = 0;
 	heap_t *temp = new->parent, *temp_r = temp->right, *temp_l = temp->left;
 
-	/* set left flag to 1 if new is the left child */
 	if (new->parent->left == new)
 		left = 1;
-	/* Update parent's right child to skip over new, point to new's right */
 	new->parent->right = new->right;
-	/* if new had right child, update its parent to point to new parent */
 	if (new->right)
 		new->right->parent = new->parent;
-	/* Update parent's left child to skip over new, point to new's left */
 	new->parent->left = new->left;
-	/* if new had left child, update its parent to point to new parent */
 	if (new->left)
 		new->left->parent = new->parent;
 	if (left)
 	{
-		/* if new was the left child, set new's right to be temp_r */
-		/*   temp_r was previously set to parent's right child */
 		new->right = temp_r;
-		/* if temp_r is a node, update its parent to point to new */
 		if (temp_r)
 			temp_r->parent = new;
 	}
 	else
 	{
-		/* if new was the right child, set new's left to be temp_l */
-		/*   temp_l was previously set to parent's left child */
 		new->left = temp_l;
-		/* if temp_l is a node, update its parent to point to new */
 		if (temp_l)
 			temp_l->parent = new;
 	}
-	/* Update new's parent to be the original parent's parent */
 	new->parent = temp->parent;
-	/* if parent node is a node, reset its child node */
 	if (temp->parent)
 	{
-		/* check if originally parent (temp) was left child */
 		if (temp->parent->left == temp)
-			/* reset left child to new node */
 			temp->parent->left = new;
 		else
-			/* otherwise reset right child to new node */
 			temp->parent->right = new;
 	}
-	/* otherwise, reset pointer to root node to new */
 	else
 		*root = new;
-	/* if new was left child, set left child to temp (original parent) */
 	if (left)
 		new->left = temp;
-	/* otherwise, set right child to temp (original parent) */
 	else
 		new->right = temp;
-	/* set temp (original parent) to point back to new as parent */
 	temp->parent = new;
-	/* return the newly swapped node to keep checking if max binary heap */
 	return (new);
 }
