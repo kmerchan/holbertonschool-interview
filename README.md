@@ -1,5 +1,5 @@
 # holbertonschool-interview
-This repository contains work on practice technical interview questions for Holberton School.
+This repository contains work on practice technical interview questions for Holberton School. Through these projects, I have gained a deeper understanding of data structures (linked lists, binary trees, AVL trees, etc.), sorting algorithms and time complexity, and better ways to refactor my code.
 
 * [0x00. Lockboxes](/0x00-lockboxes)
 * [0x01. Insert in Sorted Linked List](/0x01-insert_in_sorted_linked_list)
@@ -28,5 +28,11 @@ This repository contains work on practice technical interview questions for Holb
 * [0x18. Merge Sort](/0x18-merge_sort)
 * [0x19. Making Change](/0x19-making_change)
 
-### Authors
-Kelsie Merchant [GitHub](https://github.com/kmerchan/) / [email: kelsie.merchant@holbertonschool.com](kelsie.merchant@holbertonschool.com)
+### Author
+Kelsie Merchant:
+
+Through my background in Engineering Physics, I have developed a passion for problem-solving and breaking down complex tasks. I have enjoyed solving these algorithm puzzles as I practice my skills for technical interviews and refine my understanding of more efficient algorithms and clean code. You can find out more about me by checking out the links below:
+* [GitHub](https://github.com/kmerchan/)
+* [LinkedIn](https://www.linkedin.com/in/kelsie-merchant-physics/)
+* [Twitter](https://twitter.com/MerchantKelsie)
+* [email: kelsie.merchant@holbertonschool.com](kelsie.merchant@holbertonschool.com)
