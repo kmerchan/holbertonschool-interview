@@ -28,7 +28,7 @@ This repository contains work on practice technical interview questions for Holb
 * [0x18. Merge Sort](/0x18-merge_sort)
 * [0x19. Making Change](/0x19-making_change)
 
-These projects contain work in a variety of languages, including:
+These projects demonstrate work in a variety of languages, including:
 * C
 <img src="https://i.ibb.co/5xskfqQ/Screenshot-2021-06-27-11-55-49-PM.png" alt="C code" border="0">
 <img src="https://i.ibb.co/Q9Qqp8m/Screenshot-2021-06-27-11-39-14-PM.png" alt="C program output" border="0">
