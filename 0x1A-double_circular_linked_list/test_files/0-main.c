@@ -43,6 +43,7 @@ int main(void)
 
 	printf("Added to the end:\n");
 	print_list(list);
+
 	list = NULL;
 	add_node_begin(&list, "Holberton");
 	add_node_begin(&list, "School");
