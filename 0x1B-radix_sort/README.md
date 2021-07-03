@@ -8,4 +8,4 @@ This interview algorithm project sorts an array of ints with radix sort, which s
   * the algorithm prints the array each time the significant digit is increased
 
 ### test_files
-The [test_files](/0x1B-radix_sort/test_files/) directory contains files used to test the output of the algorithm locally.
+The [test_files](/0x1B-radix_sort/test_files/) directory contains files used to test the output of the algorithm locally and given source code to print an array.
