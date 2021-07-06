@@ -14,6 +14,9 @@ void radix_sort(int *array, size_t size)
 	int *holder = NULL;
 	int digit_count = 0, current_digit = 0, divisor = 0;
 
+	/* Check if inputs are valid or if there is enough info to sort */
+	if (array == NULL || size < 2)
+		return;
 	/* allocate memory for temp array, same size as input array */
 	holder = malloc(sizeof(int) * size);
 	if (holder == NULL)
