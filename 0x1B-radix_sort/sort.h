@@ -14,5 +14,7 @@ void radix_sort(int *array, size_t size);
 int digit_counting(int *array, size_t size);
 /* helper function to get the divisor to get specific digit from number */
 int get_divisor(int current_digit);
+/* helper function to sort & insert value into temp holder by current digit */
+void insert_into_holder(int value, int divisor, int *holder, unsigned int i);
 
 #endif
