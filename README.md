@@ -29,6 +29,7 @@ This repository contains work on practice technical interview questions for Holb
 * [0x19. Making Change](/0x19-making_change)
 * [0x1A. Double Circular Linked List](0x1A-double_circular_linked_list)
 * [0x1B. Radix Sort](0x1B-radix_sort)
+* [0x1C. Island Perimeter](0x1C-island_perimeter)
 
 These projects demonstrate work in a variety of languages, including:
 * C
