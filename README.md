@@ -16,8 +16,8 @@ This repository contains work on practice technical interview questions for Holb
 * [0x0C. N Queens](/0x0C-nqueens)
 * [0x0D. Array to AVL](/0x0D-sorted_array_to_avl)
 * [0x0E. Linear Search in Skip List](/0x0E-linear_skip)
-* [0x0F. Star Wars API](0x0F-starwars_api)
-* [0x10. Rain](0x10-rain)
+* [0x0F. Star Wars API](/0x0F-starwars_api)
+* [0x10. Rain](/0x10-rain)
 * [0x11. Heap Sort](/0x11-heap_sort)
 * [0x12. Advanced Binary Search](/0x12-advanced_binary_search)
 * [0x13. Count it!](/0x13-count_it)
@@ -27,9 +27,10 @@ This repository contains work on practice technical interview questions for Holb
 * [0x17. Find the Loop](/0x17-find_the_loop)
 * [0x18. Merge Sort](/0x18-merge_sort)
 * [0x19. Making Change](/0x19-making_change)
-* [0x1A. Double Circular Linked List](0x1A-double_circular_linked_list)
-* [0x1B. Radix Sort](0x1B-radix_sort)
-* [0x1C. Island Perimeter](0x1C-island_perimeter)
+* [0x1A. Double Circular Linked List](/0x1A-double_circular_linked_list)
+* [0x1B. Radix Sort](/0x1B-radix_sort)
+* [0x1C. Island Perimeter](/0x1C-island_perimeter)
+* [0x1D. AVL Trees](/0x1D-avl_trees)
 
 These projects demonstrate work in a variety of languages, including:
 * C
