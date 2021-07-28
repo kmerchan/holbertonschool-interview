@@ -31,6 +31,7 @@ This repository contains work on practice technical interview questions for Holb
 * [0x1B. Radix Sort](/0x1B-radix_sort)
 * [0x1C. Island Perimeter](/0x1C-island_perimeter)
 * [0x1D. AVL Trees](/0x1D-avl_trees)
+* [0x1E. Wild Compare](/0x1E-wild_cmp)
 
 These projects demonstrate work in a variety of languages, including:
 * C
