@@ -34,6 +34,7 @@ This repository contains work on practice technical interview questions for Holb
 * [0x1E. Wild Compare](/0x1E-wild_cmp)
 * [0x1F. Pascal's Triangle](/0x1F-pascal_triangle)
 * [0x20. RegEx](/0x20-regex)
+* [0x21. Substring with Concatenated Words](/21-substring)
 
 These projects demonstrate work in a variety of languages, including:
 * C
