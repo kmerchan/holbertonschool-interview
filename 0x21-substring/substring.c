@@ -1,4 +1,4 @@
-#include "substring.c"
+#include "substring.h"
 
 /**
  * find_substring - finds all possible substrings containing list of words
@@ -11,29 +11,71 @@
  */
 int *find_substring(char const *s, char const **words, int nb_words, int *n)
 {
-	unsigned int word = 0, i = 0, match = 0;
-	int *word_used = NULL;
+	int word = 0, i = 0, match = 0, count = 0, j = 0, k = 0, I = 0;
+	int *word_used = NULL, *indices = NULL;
 
-	*n = NULL;
-
-	word_used = malloc(sizeof(int) * nb_words);
-	if (word_used == NULL)
+	*n = 0;
+	if (words == NULL)
 		return (NULL);
-	for (word = 0; word < nb_words; word++)
-		word_used[word] = -1;
+	j = (nb_words * string_length(words[0]));
+	i = allocate(&word_used, nb_words, &indices, (string_length(s) / j) + 1);
+	if (i == -1)
+		return (NULL);
 	for (i = 0; s[i]; i++)
 	{
-		for (word = 0; word < nb_words; word++)
+		I = i;
+		for (reset(&word_used, nb_words), word = 0; word < nb_words && s[i]; word++)
 		{
-			if (word_used[word] != -1)
-				continue;
 			match = string_compare(s, i, words[word]);
-			if (match != 0)
+			while (match != 0)
 			{
-				
+				word_used[word] = 1;
+				i += match;
+				if (s[i] == '\0')
+					break;
+				for (count = 0, word = 0; word < nb_words; word++)
+				{
+					if (word_used[word] != -1)
+						count++;
+					match = string_compare(s, i, words[word]);
+					if (match != 0)
+						break;
+				}
+				if (count == nb_words)
+					indices[k++] = (i - j);
 			}
 		}
+		if (i != I || s[i] == '\0')
+			i--;
 	}
+	free(word_used);
+	*n = k;
+	return (indices);
+}
+
+/**
+ * allocate - allocates memory for int arrays
+ * @word_used: pointer to first memory to allocate
+ * @nb_words: number of words to allocate space for
+ * @indices: pointer to second memory to allocate
+ * @max_index: maximum number of indices possible to allocate for
+ *
+ * Return: -1 if failed, 0 if successful
+ */
+int allocate(int **word_used, int nb_words, int **indices, int max_index)
+{
+	*word_used = malloc(sizeof(int) * nb_words);
+	if (*word_used == NULL)
+		return (-1);
+	reset(word_used, nb_words);
+	*indices = malloc(sizeof(int) * max_index);
+	if (*indices == NULL)
+	{
+		free(word_used);
+		return (-1);
+	}
+	reset(indices, max_index);
+	return (0);
 }
 
 /**
@@ -69,4 +111,18 @@ int string_length(char const *str)
 	for (i = 0; str[i]; i++)
 		continue;
 	return (i);
+}
+
+/**
+ * reset - sets all elements of array to -1
+ * @array: pointer to the array to reset
+ * @size: the size of the array to reset
+ *
+ */
+void reset(int **array, int size)
+{
+	int i = 0;
+
+	for (i = 0; i < size; i++)
+		(*array)[i] = -1;
 }
