@@ -10,3 +10,6 @@ This interview algorithm project finds all the possible substrings containing a 
   * returns an allocated array, storing each index in `s`, at which a substring was found or `NULL` if no solution is found
   * all words in the array `words` are the same length
   * a valid substring `s` is the concatenation of each word in `words` exactly once and without any intervening characters
+
+### test_files
+The [test_files](/0x21-substring/test_files/) directory contains files used to test the output of the algorithm locally.
