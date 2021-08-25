@@ -30,7 +30,7 @@ def isWinner(x, nums):
     """
     Maria = 0
     Ben = 0
-    if (x < 1 || x != len(nums)):
+    if (x < 1 or x != len(nums)):
         return None
     for n in nums:
         winner = primeGame(n)
