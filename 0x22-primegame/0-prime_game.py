@@ -30,9 +30,8 @@ def isWinner(x, nums):
     """
     Maria = 0
     Ben = 0
-    if (x != len(nums)):
-        raise ValueError(
-            "nums should be array of length equal to x, the number of rounds")
+    if (x < 1 || x != len(nums)):
+        return None
     for n in nums:
         winner = primeGame(n)
         if winner == 1:
